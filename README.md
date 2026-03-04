@@ -23,6 +23,10 @@ Tested on:
 - Chrome (latest)
 - Edge (latest)
 
+## Time Spent
+
+Approximately 4-5 hours.
+
 ## Screenshots
 
 ### Screenshot 1
