@@ -1,9 +1,8 @@
-# Baszucki Take-Home: Health Resource Finder
+# Resource Library
 
 React + Vite app for browsing, searching, filtering, and sorting health resources from local JSON data.
 
-A responsive React application that allows users to browse, search, filter, and sort health-related educational resources from a local dataset. Designed to simulate a scalable content exploration experience similar to Metabolic Mind's growing library.
-
+A responsive React application that allows users to browse, search, filter, and sort health-related educational resources from a local dataset.
 ## Tech Stack
 
 - React 18
