@@ -23,6 +23,14 @@ Tested on:
 - Chrome (latest)
 - Edge (latest)
 
+## Screenshots
+
+### Screenshot 1
+![Screenshot 1](screenshots/screenshot1.png)
+
+### Screenshot 2
+![Screenshot 2](screenshots/screenshot2.png)
+
 ## Assumptions and Key Decisions
 
 - Data remains local in `src/data/resources.json` to keep scope focused on frontend behavior and avoid backend setup overhead.
