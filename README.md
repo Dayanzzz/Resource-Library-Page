@@ -1,8 +1,8 @@
-# Baszucki Take-Home: Health Resource Finder
+# Health Resource Library
 
 React + Vite app for browsing, searching, filtering, and sorting health resources from local JSON data.
 
-A responsive React application that allows users to browse, search, filter, and sort health-related educational resources from a local dataset. Designed to simulate a scalable content exploration experience similar to Metabolic Mind's growing library.
+A responsive React application that allows users to browse, search, filter, and sort health-related educational resources from a local dataset. D
 
 ## Tech Stack
 
@@ -66,8 +66,8 @@ npm -v
 ### Option A: Clone with Git
 
 ```powershell
-git clone <>
-cd Baszucki_TakeHome
+git clone https://github.com/Dayanzzz/Resource-Library-Page.git
+cd Resource-Library-Page
 ```
 
 ### Option B: Download ZIP
