@@ -97,7 +97,7 @@ function SuggestResourceForm({ onAddSuggestion }) {
     <section className="suggest-form" aria-label="Suggest a resource">
       <h2>Suggest a Resource</h2>
       <p className="suggest-form-note">
-        This is a local-only form with basic validation.
+        This is a local-only form.
       </p>
 
       <form className="suggest-form-grid" onSubmit={handleSubmit} noValidate>
