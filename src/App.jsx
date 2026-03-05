@@ -1,5 +1,5 @@
 import React from "react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import FiltersPanel from "./components/FiltersPanel";
 import ResourceGrid from "./components/ResourceGrid";
 import SearchBar from "./components/SearchBar";
@@ -8,28 +8,14 @@ import SuggestResourceForm from "./components/SuggestResourceForm";
 import useResources from "./hooks/useResources";
 import useUrlFilters from "./hooks/useUrlFilters";
 import { filterAndSortResources } from "./utils/filterUtils";
+import useSuggestedResources from "./hooks/useSuggestedResources";
+import { buildActiveFilterLabels } from "./utils/activeFilterLabels";
 
 function App() {
   const { resources, contentTypeOptions, conditionOptions, dataWarning } = useResources();
   const { filters, setFilters, clearFilters } = useUrlFilters();
   const [currentView, setCurrentView] = useState("browse");
-  const [suggestedResources, setSuggestedResources] = useState(() => {
-    if (typeof window === "undefined") {
-      return [];
-    }
-
-    try {
-      const raw = window.localStorage.getItem("suggested-resources");
-      const parsed = raw ? JSON.parse(raw) : [];
-      return Array.isArray(parsed) ? parsed : [];
-    } catch {
-      return [];
-    }
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem("suggested-resources", JSON.stringify(suggestedResources));
-  }, [suggestedResources]);
+  const { suggestedResources, setSuggestedResources } = useSuggestedResources();
 
   const allResources = useMemo(() => (Array.isArray(resources) ? resources : []), [resources]);
 
@@ -40,32 +26,7 @@ function App() {
     [allResources, filters]
   );
 
-  const activeFilterLabels = useMemo(() => {
-    const contentTypeLabels = (filters?.contentTypes ?? []).map((value) => ({
-      id: `ct-${value}`,
-      label: value,
-      kind: "content"
-    }));
-
-    const conditionLabels = (filters?.conditions ?? []).map((value) => ({
-      id: `cond-${value}`,
-      label: value,
-      kind: "condition"
-    }));
-
-    const searchLabel =
-      typeof filters?.search === "string" && filters.search.trim()
-        ? [
-            {
-              id: "search-label",
-              label: `Search: ${filters.search.trim()}`,
-              kind: "search"
-            }
-          ]
-        : [];
-
-    return [...contentTypeLabels, ...conditionLabels, ...searchLabel];
-  }, [filters]);
+  const activeFilterLabels = useMemo(() => buildActiveFilterLabels(filters), [filters]);
 
   // Stable handlers help memoized child components skip unnecessary rerenders.
 
